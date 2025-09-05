@@ -292,13 +292,23 @@ document.querySelectorAll(".link-switch").forEach(link => {
     document.querySelectorAll(".auth-form").forEach(f => {
       f.classList.add("d-none");
       f.classList.remove("animate__fadeIn"); 
-      f.style.pointerEvents = 'none'; // bloquear temporal
+      f.style.pointerEvents = 'none';
     });
 
     const active = document.getElementById(target);
     active.classList.remove("d-none");
     void active.offsetWidth; // reinicia animación
     active.classList.add("animate__fadeIn");
-    active.style.pointerEvents = 'auto'; // habilitar interacción
+    active.style.pointerEvents = 'auto';
   });
+});
+
+window.addEventListener('load', () => {
+  const preloader = document.getElementById('preloader');
+  preloader.style.opacity = '0';
+  preloader.style.transition = 'opacity 0.5s ease';
+  
+  setTimeout(() => {
+    preloader.style.display = 'none';
+  }, 200);
 });
